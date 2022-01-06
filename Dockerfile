@@ -4,7 +4,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install Apt Packages
 RUN apt-get update \
-  && apt-get install -y apt-file netcat net-tools dnsutils curl wget vim zsh less sudo g++ git unzip busybox
+  && apt-get install -y apt-file netcat net-tools dnsutils curl wget vim zsh less sudo g++ git unzip busybox iputils-ping traceroute nmap \
+  && apt-get clean autoclean \
+  && apt-get autoremove --yes \
+  && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 # Install AWS CLI
 RUN apt-get install -y awscli
